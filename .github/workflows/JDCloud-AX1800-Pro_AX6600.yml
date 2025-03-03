@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############手动修改##############
-name: JDCloud-AX1800-Pro_AX6600-lede
+name: JDCloud-AX1800-Pro-lede
 
 on:
   repository_dispatch:
@@ -29,7 +29,7 @@ on:
 env:
   ###############手动修改##############
   OPENWRT_NAME: lede
-  UPLOAD_TAG_NAME: jdcloud-ax1800-pro_ax6600
+  UPLOAD_TAG_NAME: JDCloud-AX1800-Pro
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
@@ -96,9 +96,6 @@ jobs:
 
     - name: 应用patch & 更新安装 feeds
       run: |
-        cp JDCloud-AX1800-Pro_AX6600/jdcloud-ax1800-pro_ax6600.patch openwrt/jdcloud-ax1800-pro_ax6600.patch
-        cd openwrt
-        git apply jdcloud-ax1800-pro_ax6600.patch
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -182,7 +179,6 @@ jobs:
         echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
         echo "- 登录地址：${{ env.IP_ADDR }}" >> release.txt
         echo "- 注意京东云AX1800-Pro亚瑟无线AX1800规格，5G无线不支持160MHz频宽" >> release.txt
-        echo "- 注意京东云AX6600雅典娜无线AX6600规格，5.8G无线不支持160MHz频宽" >> release.txt
         if [[ "${{ env.BUILD_DOCKERMAN }}" == '-docker' ]]; then
                 echo "- 已编译luci-app-dockerman" >> release.txt
         else
