@@ -89,9 +89,8 @@ jobs:
 
     - name: 应用patch & 更新安装 feeds
       run: |
-        cp WR330/wireguard.patch openwrt/wireguard.patch
+        cp WR330/999-wireguard-save-incoming-ip-5.4_v4.patch openwrt/target/linux/generic/999-wireguard-save-incoming-ip-5.4_v4.patch
         cd openwrt
-        git apply wireguard.patch
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
