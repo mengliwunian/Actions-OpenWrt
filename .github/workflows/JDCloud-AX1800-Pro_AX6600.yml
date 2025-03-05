@@ -8,12 +8,16 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############手动修改##############
-name: JDCloud-AX1800-Pro_AX6600-lede
+name: JDCloud-AX1800-Pro_AX6600-LiBwrt
 
 on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
+      LAN_IP:
+        description: 'Set LAN IP Address'
+        required: true
+        default: '192.168.1.1'
       NO_DOCKERMAN:
         description: 'Not build luci-app-dockerman'
         required: true
@@ -28,14 +32,13 @@ on:
 
 env:
   ###############手动修改##############
-  OPENWRT_NAME: lede
+  OPENWRT_NAME: LiBwrt
   UPLOAD_TAG_NAME: jdcloud-ax1800-pro_ax6600
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  REPO_BRANCH: kernel-6.12
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: JDCloud-AX1800-Pro_AX6600/.config
   DIY_P1_SH: JDCloud-AX1800-Pro_AX6600/diy-part1.sh
-  DIY_P2_SH: JDCloud-AX1800-Pro_AX6600/diy-part2.sh
   SSH_ACTIONS: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -96,18 +99,27 @@ jobs:
 
     - name: 应用patch & 更新安装 feeds
       run: |
-        cp JDCloud-AX1800-Pro_AX6600/jdcloud-ax1800-pro_ax6600.patch openwrt/jdcloud-ax1800-pro_ax6600.patch
         cd openwrt
-        git apply jdcloud-ax1800-pro_ax6600.patch
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
     - name: 加载config & DIY_P2_SH
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
+
+    - name: 设置LAN IP地址（路由器登录地址）
+      run: |
         cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P2_SH
+        SET_IP=${{ github.event.inputs.LAN_IP }}
+        if [[ $SET_IP =~ ^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$ ]]; then
+            #修改immortalwrt.lan关联IP
+            sed -i "s/192\.168\.[0-9]*\.[0-9]*/$SET_IP/g" $(find feeds/luci/modules/luci-mod-system -type f -name "flash.js")
+            #修改默认IP地址
+            sed -i "s/192\.168\.[0-9]*\.[0-9]*/$SET_IP/g" package/base-files/files/bin/config_generate
+            echo "Set LAN IP Address: $SET_IP"
+        else
+            echo "Invalid IP address, use default."
+        fi
 
     - name: 取消编译dockerman
       if: github.event.inputs.NO_DOCKERMAN == 'true'
