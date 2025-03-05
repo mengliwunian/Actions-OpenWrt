@@ -4,10 +4,10 @@
 SCRIPT_BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/"
 
 # 定义文件路径
-VERSION_FILE="${SCRIPT_BASE_DIR}openwrt/include/version.mk"  # 脚本完整路径
-WIRELESS_FILE="${SCRIPT_BASE_DIR}openwrt/target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh"
-MAC80211_FILE="${SCRIPT_BASE_DIR}openwrt/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"  # 脚本完整路径
-IMAGECONFIG_FILE="${SCRIPT_BASE_DIR}openwrt/package/base-files/image-config.in"  # 脚本完整路径
+VERSION_FILE="${SCRIPT_BASE_DIR}include/version.mk"  # 脚本完整路径
+WIRELESS_FILE="${SCRIPT_BASE_DIR}target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh"
+MAC80211_FILE="${SCRIPT_BASE_DIR}package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"  # 脚本完整路径
+IMAGECONFIG_FILE="${SCRIPT_BASE_DIR}package/base-files/image-config.in"  # 脚本完整路径
 # 检查文件是否存在
 if [[ ! -f "$VERSION_FILE" ]]; then
     echo "文件 $VERSION_FILE 不存在"
