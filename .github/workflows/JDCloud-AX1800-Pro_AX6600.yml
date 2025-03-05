@@ -97,6 +97,8 @@ jobs:
         chmod +x openwrt/diy-part1.sh
         cd openwrt
         $GITHUB_WORKSPACE/openwrt/diy-part1.sh
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
 
     - name: 应用patch & 更新安装 feeds
       run: |
