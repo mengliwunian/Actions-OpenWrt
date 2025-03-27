@@ -102,7 +102,10 @@ jobs:
 
     - name: 应用patch & 更新安装 feeds
       run: |
-        cd openwrt
+        cp JDCloud-AX1800-Pro_AX6600/diskman.patch openwrt/feeds/luci/diskman.patch
+        cd openwrt/feeds/luci/
+        git apply diskman.patch
+        cd ../../
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
