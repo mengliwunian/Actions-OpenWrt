@@ -11,6 +11,8 @@
 #
 
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+git clone https://github.com/sundaqiang/openwrt-packages /tmp/
+mv /tmp/luci-app-wolplus/ package/
 ##-----------------Del duplicate packages------------------
 rm -rf feeds/packages/net/open-app-filter
 
