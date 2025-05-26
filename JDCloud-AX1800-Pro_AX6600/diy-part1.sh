@@ -35,11 +35,11 @@ if [[ ! -f "$CONFIGGENERATE_FILE" ]]; then
 fi
 
 # 使用 sed 命令替换文本
-sed -i 's/LiBwrt/OpenWrt/g' "$VERSION_FILE"
-sed -i 's/LiBwrt/OpenWrt/g' "$WIRELESS_FILE"
-sed -i 's/LiBwrt/OpenWrt/g' "$MAC80211_FILE"
-sed -i 's/LiBwrt/OpenWrt/g' "$IMAGECONFIG_FILE"
-sed -i 's/LibWrt/OpenWrt/g' "$CONFIGGENERATE_FILE"
+sed -i 's/libwrt/OpenWrt/gi' "$VERSION_FILE"
+sed -i 's/libwrt/OpenWrt/gi' "$WIRELESS_FILE"
+sed -i 's/libwrt/OpenWrt/gi' "$MAC80211_FILE"
+sed -i 's/libwrt/OpenWrt/gi' "$IMAGECONFIG_FILE"
+sed -i 's/libwrt/OpenWrt/gi' "$CONFIGGENERATE_FILE"
 
 BANNER_CONTENT=' _______                     ________        __
 |       |.-----.-----.-----.|  |  |  |.----.|  |_
