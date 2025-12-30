@@ -8,38 +8,37 @@ IMAGECONFIG_FILE="package/base-files/image-config.in"
 CONFIGGENERATE_FILE="package/base-files/files/bin/config_generate"
 BANNER_FILE="package/base-files/files/etc/banner"
 
-# 检查文件是否存在
+# 检查文件是否存在并使用 sed 命令替换文本
 if [[ ! -f "$VERSION_FILE" ]]; then
     echo "文件 $VERSION_FILE 不存在"
-    exit 1
+else
+    sed -i 's/libwrt/OpenWrt/gi' "$VERSION_FILE"
 fi
 
 if [[ ! -f "$WIRELESS_FILE" ]]; then
     echo "文件 $WIRELESS_FILE 不存在"
-    exit 1
+else
+    sed -i 's/libwrt/OpenWrt/gi' "$WIRELESS_FILE"
 fi
 
 if [[ ! -f "$MAC80211_FILE" ]]; then
     echo "文件 $MAC80211_FILE 不存在"
-    exit 1
+else
+    sed -i 's/libwrt/OpenWrt/gi' "$MAC80211_FILE"
 fi
 
 if [[ ! -f "$IMAGECONFIG_FILE" ]]; then
     echo "文件 $IMAGECONFIG_FILE 不存在"
-    exit 1
+else
+    sed -i 's/libwrt/OpenWrt/gi' "$IMAGECONFIG_FILE"
 fi
 
 if [[ ! -f "$CONFIGGENERATE_FILE" ]]; then
     echo "文件 $CONFIGGENERATE_FILE 不存在"
-    exit 1
+else
+    sed -i 's/libwrt/OpenWrt/gi' "$CONFIGGENERATE_FILE"
 fi
 
-# 使用 sed 命令替换文本
-sed -i 's/libwrt/OpenWrt/gi' "$VERSION_FILE"
-sed -i 's/libwrt/OpenWrt/gi' "$WIRELESS_FILE"
-sed -i 's/libwrt/OpenWrt/gi' "$MAC80211_FILE"
-sed -i 's/libwrt/OpenWrt/gi' "$IMAGECONFIG_FILE"
-sed -i 's/libwrt/OpenWrt/gi' "$CONFIGGENERATE_FILE"
 
 BANNER_CONTENT=' _______                     ________        __
 |       |.-----.-----.-----.|  |  |  |.----.|  |_
