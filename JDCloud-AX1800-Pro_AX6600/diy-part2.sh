@@ -10,7 +10,7 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+#git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 git clone https://github.com/sundaqiang/openwrt-packages /tmp/openwrt-packages
 mv /tmp/openwrt-packages/luci-app-wolplus/ package/
 rm -rf /tmp/openwrt-packages
