@@ -3,7 +3,7 @@
 PKG_PATH="$GITHUB_WORKSPACE/openwrt/package/"
 
 #修改qca-nss-drv启动顺序
-NSS_DRV="openwrt/feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init"
+NSS_DRV="./feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init"
 if [ -f "$NSS_DRV" ]; then
 	echo " "
 
