@@ -36,7 +36,7 @@ env:
   UPLOAD_TAG_NAME: jdcloud-ax1800-pro_ax6600
   #REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_URL: https://github.com/mengliwunian/openwrt-6.x
-  REPO_BRANCH: k6.12-nss
+  REPO_BRANCH: main-nss
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: JDCloud-AX1800-Pro_AX6600/.config
   DIY_P1_SH: JDCloud-AX1800-Pro_AX6600/diy-part1.sh
@@ -98,7 +98,7 @@ jobs:
 
     - name: 加载feeds.conf.default & DIY_P1_SH
       run: |
-        #[ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
