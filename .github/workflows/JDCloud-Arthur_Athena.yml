@@ -181,7 +181,7 @@ jobs:
         rm -rf packages
         sudo -E apt-get -qq install rename
                 for val in "${devices[@]}"; do
-          rename "s/.*${val}/${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${val}${{ env.BUILD_DOCKERMAN }}/" *
+          rename "s/.*${val}/${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${val}/" *
           echo "$val"
         done
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
@@ -191,7 +191,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.UPLOAD_TAG_NAME }}${{ env.BUILD_DOCKERMAN }}
+        name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.UPLOAD_TAG_NAME }}
         path: ${{ env.FIRMWARE }}
 
     - name: 生成固件Release标签
@@ -204,7 +204,7 @@ jobs:
         echo "- 登录地址：${{ env.IP_ADDR }}" >> release.txt
         echo "- 注意京东云AX1800-Pro亚瑟无线AX1800规格，5G无线不支持160MHz频宽" >> release.txt
         echo "- 注意京东云AX6600雅典娜无线AX6600规格，5.8G无线不支持160MHz频宽" >> release.txt
-        echo "release_tag=${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.UPLOAD_TAG_NAME }}${{ env.BUILD_DOCKERMAN }}" >> $GITHUB_OUTPUT
+        echo "release_tag=${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.UPLOAD_TAG_NAME }}" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布固件至Release
