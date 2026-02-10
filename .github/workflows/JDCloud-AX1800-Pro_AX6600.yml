@@ -37,7 +37,7 @@ env:
   #REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_URL: https://github.com/qosmio/openwrt-ipq
   REPO_BRANCH: main-nss
-  FEEDS_CONF: feeds.conf.default
+  FEEDS_CONF: JDCloud-AX1800-Pro_AX6600/feeds.conf.default
   CONFIG_FILE: JDCloud-AX1800-Pro_AX6600/.config
   DIY_P1_SH: JDCloud-AX1800-Pro_AX6600/diy-part1.sh
   DIY_P2_SH: JDCloud-AX1800-Pro_AX6600/diy-part2.sh
