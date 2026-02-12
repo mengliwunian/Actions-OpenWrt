@@ -31,7 +31,7 @@ env:
   UPLOAD_TAG_NAME: JDCloud-Arthur_Athena
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt
   REPO_BRANCH: main
-  FEEDS_CONF: feeds.conf.default
+  FEEDS_CONF: JDCloud-Arthur_Athena/feeds.conf.default
   CONFIG_FILE: JDCloud-Arthur_Athena/.config
   HANDLES_SH: JDCloud-Arthur_Athena/Handles.sh
   DIY_P2_SH: JDCloud-Arthur_Athena/diy-part2.sh
