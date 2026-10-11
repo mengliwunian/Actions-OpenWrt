@@ -30,7 +30,7 @@ env:
   OPENWRT_NAME: PONWRT
   UPLOAD_TAG_NAME: FiberHome_Hg5382a
   REPO_URL: https://github.com/pbs05/ponwrt
-  REPO_BRANCH: main
+  REPO_BRANCH: master
   FEEDS_CONF: FiberHome_Hg5382a/feeds.conf.default
   CONFIG_FILE: FiberHome_Hg5382a/.config
   #HANDLES_SH: FiberHome_Hg5382a/Handles.sh
@@ -73,7 +73,7 @@ jobs:
       with:
         # this might remove tools that are actually needed,
         # when set to "true" but frees about 6 GB
-        tool-cache: true
+        preinstalled-runtimes: true
         
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
