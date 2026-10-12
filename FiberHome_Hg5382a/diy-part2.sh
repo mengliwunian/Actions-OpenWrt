@@ -11,10 +11,11 @@
 #
 
 #git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-git clone https://github.com/sundaqiang/openwrt-packages /tmp/openwrt-packages
-#git clone https://github.com/luanmuc/luci-app-airoha-npu.git /tmp/openwrt-packages
-mv /tmp/openwrt-packages/luci-app-wolplus/ package/
-#mv /tmp/openwrt-packages/luci-app-airoha-npu/ package/
-rm -rf /tmp/openwrt-packages
+#git clone https://github.com/sundaqiang/openwrt-packages /tmp/openwrt-packages
+#mv /tmp/openwrt-packages/luci-app-wolplus/ package/
+#rm -rf /tmp/openwrt-packages
 ##-----------------Del duplicate packages------------------
 rm -rf feeds/packages/net/open-app-filter
+
+rm -rf package/luci-app-wolplus && \
+git clone https://github.com/mengliwunian/luci-app-wolplus package/luci-app-wolplus
