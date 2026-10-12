@@ -17,5 +17,5 @@
 ##-----------------Del duplicate packages------------------
 rm -rf feeds/packages/net/open-app-filter
 
-rm -rf package/luci-app-wolplus && \
+rm -rf package/luci-app-wolplus
 git clone https://github.com/mengliwunian/luci-app-wolplus package/luci-app-wolplus
