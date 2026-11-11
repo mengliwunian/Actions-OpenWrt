@@ -30,7 +30,7 @@ env:
   OPENWRT_NAME: OWRT
   UPLOAD_TAG_NAME: JDCloud-Arthur_Athena
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt
-  REPO_BRANCH: main
+  REPO_BRANCH: owrt
   FEEDS_CONF: JDCloud-Arthur_Athena/feeds.conf.default
   CONFIG_FILE: JDCloud-Arthur_Athena/.config
   HANDLES_SH: JDCloud-Arthur_Athena/Handles.sh
@@ -42,7 +42,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     permissions:
       contents: write
