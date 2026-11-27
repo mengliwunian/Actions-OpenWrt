@@ -18,3 +18,5 @@
 rm -rf feeds/packages/net/open-app-filter
 rm -rf package/luci-app-wolplus
 git clone https://github.com/mengliwunian/luci-app-wolplus package/luci-app-wolplus
+git clone https://github.com/VIKINGYFY/packages /tmp/openwrt-packages
+mv /tmp/openwrt-packages/luci-app-wolultra/ package/
